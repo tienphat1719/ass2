@@ -48,10 +48,10 @@ create table department(
 create table patient(
 	P_code			int				not null,
     P_lname			varchar(10)		not null,
-    P_fname			varchar(15)		not null,
-    P_dob			date,
-    P_gender		char			not null,
-    P_phone			varchar(12)		not null,
+--     P_fname			varchar(15)		not null,
+--     P_dob			date,
+--     P_gender		char			not null,
+--     P_phone			varchar(12)		not null,
     
     primary key(P_code)
 );

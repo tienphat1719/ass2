@@ -4,7 +4,9 @@ import mysql  from 'mysql'
 
 const app = express()
 
-import insert from './api/employee.js'
+import * as employee from './api/employee.js'
+import * as patient from './api/patient.js'
+import * as medication from './api/medication.js'
 
 const db = mysql.createPool({
     host:'localhost',
@@ -17,35 +19,23 @@ app.use(cors())
 app.use(json())
 app.use(express.urlencoded({extended: true}))
 
-app.post('/api/insert', (req, res) => { insert(req, res, db) }
+//user
 
-// (req,res) => {
-//     const code = req.body.code
-//     const lname = req.body.lname
-//     // const fname = req.body.fname
-//     // const dob = req.body.dob
-//     // const addr = req.body.addr
-//     // const gender = req.body.gender
-//     // const phone = req.body.phone
-//     // const startDate = req.body.startDate
-//     // const relatedName = req.body.relatedName
-//     // const degreeYear = req.body.degreeYear
-//     // const dCode = req.body.dCode
+//employee
+app.post('/api/employee/insert', (req, res) => { employee.insert(req, res, db) })
 
-//     //, fname, dob, addr, gender, phone, startDate, relatedName, degreeYear, dCode
-//     //, ?, ?, ?, ?, ?, ?, ?, ?, ?
-//     const sqlInsert = "INSERT INTO employee VALUES (?, ?);"
-//     db.query(sqlInsert, [code, lname] ,
-        
-//         (err, result) => {
-//         if(err) {
-//             console.log(err)
-//         } else {
-//             res.send('hello get 5')
-//         }
-//     })
-// }
-)
+//patient
+app.post('/api/patient/insert', (req, res) => { patient.insert(req, res, db) })
+app.get('/api/patient/get', (req, res) => { patient.select(req, res, db) })
+app.delete('/api/patient/delete/:P_code', (req, res) => { patient.del(req, res, db) })
+app.put('/api/patient/update', (req, res) => { patient.update(req, res, db)} )
+
+//medication
+app.post('/api/medication/insert', (req, res) => { medication.insert(req, res, db) })
+app.get('/api/medication/get', (req, res) => { medication.select(req, res, db) })
+app.delete('/api/medication/delete/:P_code', (req, res) => { medication.del(req, res, db) })
+app.put('/api/medication/update', (req, res) => { medication.update(req, res, db)} )
+
 
 app.listen(3001, () => {
     console.log('Running on port 3001')

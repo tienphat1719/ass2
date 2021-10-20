@@ -1,34 +1,38 @@
 import './App.css';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Axios from 'axios'
 
 function App() {
-  const [code, setCode] = useState('')
+  const [code, setCode] = useState()
   const [lname, setLname] = useState('')
-  const [fname, setFname] = useState('')
-  const [dob, setDOB] = useState('')
-  const [addr, setAdrr] = useState('')
-  const [gender, setGender] = useState('')
-  const [phone, setPhone] = useState('')
-  const [startDate, setStartDate] = useState('')
-  const [relatedName, setRelatedName] = useState('')
-  const [degreeYear, setDegreeYear] = useState('')
-  const [dCode, setDCode] = useState('')
+
+  const [newLname, setNewLname] = useState('')
+
+  const [patientList, setPaList] = useState([])
+  useEffect(() => {
+    Axios.get('http://localhost:3001/api/patient/get').then((res) => {
+      setPaList(res.data)
+    })
+  }, [])
 
   const submitForm = () => {
-    Axios.post('http://localhost:3001/api/insert', {
-      code: code,
-      lname: lname,
-      // fname: fname,
-      // dob: dob,
-      // addr: addr,
-      // gender: gender,
-      // phone: phone,
-      // startDate: startDate,
-      // relatedName: relatedName,
-      // degreeYear: degreeYear,
-      // dCode: dCode
-    }).then(() => {alert('insert success')})
+    Axios.post('http://localhost:3001/api/patient/insert', {
+      P_code: code,
+      P_lname: lname,
+
+    }).then(() => {alert('ins success')})
+  }
+
+  const deleteButton = (P_code) => {
+    Axios.delete(`http://localhost:3001/api/patient/delete/${P_code}`).then(() => {alert('del success')})
+  }
+
+  const updateButton = (P_code) => {
+    Axios.put('http://localhost:3001/api/patient/update', {
+      P_code: P_code,
+      P_lname: newLname,
+
+    }).then(() => {alert('update success')})
   }
 
   return (
@@ -42,36 +46,25 @@ function App() {
         <label>Last Name</label>
         <input type='text' onChange = {(e) => {setLname(e.target.value)}}/>
 
-        {/* <label>First Name</label>
-        <input type='text' onChange = {(e) => {setFname(e.target.value)}}/>
-
-        <label>DOB</label>
-        <input type='text' onChange = {(e) => {setDOB(e.target.value)}}/>
-
-        <label>Address</label>
-        <input type='text' onChange = {(e) => {setAdrr(e.target.value)}}/>
-
-        <label>Gender</label>
-        <input type='text' onChange = {(e) => {setGender(e.target.value)}}/>
-
-        <label>Phone</label>
-        <input type='text' onChange = {(e) => {setPhone(e.target.value)}}/>
-
-        <label>Start date</label>
-        <input type='text' onChange = {(e) => {setStartDate(e.target.value)}}/>
-
-        <label>Related name</label>
-        <input type='text' onChange = {(e) => {setRelatedName(e.target.value)}}/>
-
-        <label>Degree year</label>
-        <input type='text' onChange = {(e) => {setDegreeYear(e.target.value)}}/>
-
-        <label>Department code</label>
-        <input type='text' onChange = {(e) => {setDCode(e.target.value)}}/> */}
+        
 
         <button onClick={submitForm}>Submit</button>
-      </div>
 
+  
+        {patientList.map((val) => {
+          return (
+            <div>
+              <h1>patient: {val.P_code}, name: {val.P_lname}</h1>
+              <button onClick = {() => {deleteButton(val.P_code)}}>Delete</button>
+              <input type='text' onChange = {(e) => {setNewLname(e.target.value)}}/>
+              <button onClick = {() => {updateButton(val.P_code)}}>Update</button>
+            </div>
+          )
+        })}
+
+      </div>
+      <div>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-const insert = (req,res,db) => {
+export const insert = (req,res,db) => {
     const code = req.body.code
     const lname = req.body.lname
 
@@ -14,4 +14,3 @@ const insert = (req,res,db) => {
     })
 }
 
-export default insert
