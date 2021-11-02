@@ -1,6 +1,7 @@
 import './login.css';
 import { useHistory } from "react-router-dom"
 import React, {useState, useEffect} from 'react'
+import Axios from 'axios'
 
 const Login = () => {
     let history = useHistory()
@@ -23,22 +24,26 @@ const Login = () => {
     const [type, setType] = useState('')
 
     const loginSubmit = () => {
-        console.log(userID)
-        console.log(password)
+        Axios.get('http://localhost:3001/api/user/login')
+
+        // console.log(userID)
+        // console.log(password)
     }
 
     const signupSubmit = () => {
-        console.log(userID)
-        console.log(password)
-        console.log(confirmPass)
-        console.log(fname)
-        console.log(lname)
-        console.log(DD)
-        console.log(MM)
-        console.log(YYYY)
-        console.log(gender)
-        console.log(phone)
-        console.log(type)
+        Axios.post('http://localhost:3001/api/user/signup')
+        
+        // console.log(userID)
+        // console.log(password)
+        // console.log(confirmPass)
+        // console.log(fname)
+        // console.log(lname)
+        // console.log(DD)
+        // console.log(MM)
+        // console.log(YYYY)
+        // console.log(gender)
+        // console.log(phone)
+        // console.log(type)
     }
     return (
         <div className="LoginForm">

@@ -5,10 +5,11 @@ import Axios from 'axios'
 const Manager = ({authorized}) => {
     const [code, setCode] = useState()
     const [lname, setLname] = useState('')
-
+    
     const [newLname, setNewLname] = useState('')
 
     const [patientList, setPaList] = useState([])
+
     useEffect(() => {
         Axios.get('http://localhost:3001/api/patient/get').then((res) => {
         setPaList(res.data)

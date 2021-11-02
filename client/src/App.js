@@ -3,8 +3,8 @@ import {useState, useEffect} from 'react'
 import Axios from 'axios'
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom"
 
-import Login from './router/login.js';
-import Manager from './router/manager.js';
+import Login from './router/login/login.js';
+import Manager from './router/manager/manager.js';
 // import Patient from './router/patient.js';
 // import Employee from './router/Employee.js';
 
