@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   align-items: center;
   justify-content: center;
 }
@@ -27,16 +28,46 @@
 }
 
 input {
-  width: 400px;
+  width: 300px;
   height: 50px;
   border: 2px solid white;
   border-radius: 100px 100px 100px 100px;
   background: transparent;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-bottom: 20px;
   padding-left: 20px;
   color: white;
+}
+
+input.name {
+  width: 140px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+input.dob {
+  width: 87px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+select {
+  width: 140px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 100px 100px 100px 100px;
+}
+
+option {
+  color: black;
 }
 
 h1 {
@@ -49,17 +80,18 @@ h1 {
   color: white;
   margin-top: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 button {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
-
   color: black;
-  font-size: 15px;
-  font-weight: 600;
+  background-color: #04aa6d;
+  margin-top: 20px;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
   border: none;
-  border-radius: 100px 100px 100px 100px;
+  border-radius: 15px;
 }
