@@ -2,161 +2,146 @@ DROP DATABASE IF EXISTS HOSPITAL;
 CREATE DATABASE HOSPITAL;
 USE HOSPITAL;
 
-create table employee(
-	E_code 			int 			not null,
-    E_lname			varchar(10)		not null,
-   --  E_fname 		varchar(15)	 	not null,
---     E_dob			date,
---     E_address		varchar(50),
---     E_gender		char			not null,
---     E_phone			varchar(12)		not null,
---     Start_date		date			not null,
---     Related_name	varchar(10)		not null,
---     Degree_year		date			not null,
---     
---     D_code			int				not null,
-    
-    primary key(E_code)
+CREATE TABLE IF NOT EXISTS EMPLOYEE
+(
+	Ecode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
+    E_fname 		VARCHAR(255)	NOT NULL,
+    E_lname 		VARCHAR(255)	NOT NULL,
+    E_dob			DATE,
+    E_address		VARCHAR(255),
+    E_gender		CHAR(1),
+    E_phone			VARCHAR(20),
+    Start_date		DATE,
+    Related_name	VARCHAR(255),
+    Degree_year		INT,
+    Department_code	INT,
+    CONSTRAINT PRIMARY KEY (Ecode)
 );
 
-create table nurse(
-	E_code			int 			not null,
-    
-    primary key(E_code),
-    foreign key(E_code) references employee(E_code)
+CREATE TABLE IF NOT EXISTS NURSE
+(
+	Encode		INT 	NOT NULL,
+    CONSTRAINT PRIMARY KEY	(Encode)
 );
 
-create table doctor(
-	E_code 			int 			not null,
-    
-    primary key(E_code),
-    foreign key(E_code) references employee(E_code)
+CREATE TABLE IF NOT EXISTS DOCTOR
+(
+	Edcode		INT 	NOT NULL,
+    CONSTRAINT PRIMARY KEY (Edcode)
 );
 
-create table department(
-	D_code			int				not null,
-    Title			varchar(20)		not null,
-	Dean_code		int,
-    
-    primary key(D_code),
-    foreign key(Dean_code) references doctor(E_code)
+CREATE TABLE IF NOT EXISTS DEPARTMENT
+(
+	Depart_code		INT 	NOT NULL	UNIQUE	AUTO_INCREMENT,
+    Title			VARCHAR(256),
+    Dean_code		INT,
+    CONSTRAINT PRIMARY KEY (Depart_code)
 );
 
--- alter table employee
--- 	add foreign key(D_code) references department(D_code);
-
-create table patient(
-	P_code			int				not null,
-    P_lname			varchar(10)		not null,
---     P_fname			varchar(15)		not null,
---     P_dob			date,
---     P_gender		char			not null,
---     P_phone			varchar(12)		not null,
-    
-    primary key(P_code)
+CREATE TABLE IF NOT EXISTS PATIENT
+(
+	Pcode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
+    P_fname 		VARCHAR(255)	NOT NULL,
+    P_lname 		VARCHAR(255)	NOT NULL,
+    P_dob			DATE,
+    P_gender		CHAR(1),
+    P_phone			VARCHAR(20),
+	CONSTRAINT PRIMARY KEY (Pcode)
 );
 
-create table outpatient(
-	P_code			int				not null,
-    
-    primary key(P_code),
-    foreign key(P_code) references patient(P_code)
+CREATE TABLE IF NOT EXISTS OUTPATIENT
+(
+	Pocode			INT 	NOT NULL,
+    CONSTRAINT PRIMARY KEY (Pocode)
 );
 
-create table inpatient(
-	P_code			int				not null,
-    Date_admission	date			not null,
-    Sickroom		int				not null,
-    Date_discharge	date,
-    P_fee			int,
-    
-    Nurse_code		int,
-    Doc_code		int,
-    foreign key(Nurse_code) references nurse(E_code),
-    foreign key(Doc_code) references doctor(E_code),
-    
-    primary key(P_code),
-    foreign key(P_code) references patient(P_code)
+CREATE TABLE IF NOT EXISTS EXAMINATION
+(
+	Pocode			INT 	NOT NULL,
+    O_fee			FLOAT	NOT NULL,
+    O_diagnosis		VARCHAR(255),
+    Exam_date		DATE,
+    Next_exam_date	DATE,
+    Doc_code		INT 	NOT NULL,
+    CONSTRAINT PRIMARY KEY	(Pocode, Exam_date, Next_exam_date)
 );
 
-create table medication(
-	M_code			int				not null,
-    M_name			varchar(20)		not null,
-    M_ex_date		date			not null,
-    M_effect		varchar(45)		not null,
-    M_price			int				not null,
-    
-    primary key(M_code)
+CREATE TABLE IF NOT EXISTS INPATIENT
+(
+	Picode				INT 	NOT NULL,
+	Date_of_admission	DATE,
+    Sickroom			VARCHAR(10),
+    Date_of_discharge	DATE,
+    I_fee				FLOAT	NOT NULL,
+    Nurse_code			INT 	NOT NULL,
+    Doc_code			INT 	NOT NULL,
+    CONSTRAINT PRIMARY KEY (Picode)
 );
 
-create table provider(
-	Pr_code			int 			not null,
-    Pr_name			varchar(20)		not null,
-    Pr_add			varchar(50)		not null,
-    Pr_phone		varchar(12)		not null,
-    
-    primary key(Pr_code)
+CREATE TABLE IF NOT EXISTS TREATMENT
+(
+	Picode			INT		NOT NULL,
+    T_start_date	DATE,
+    T_end_date		DATE,
+    Result			VARCHAR(255),
+    CONSTRAINT PRIMARY KEY (Picode,T_start_date,T_end_date)
 );
 
-create table provide(
-	Pr_code			int,
-    M_code			int,
-    
-	primary key(Pr_code, M_code),
-    foreign key(Pr_code) references provider(Pr_code),
-    foreign key(M_code) references	medication(M_code)
+CREATE TABLE IF NOT EXISTS MEDICATION
+(
+	Mcode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
+    M_name			VARCHAR(255)	NOT NULL,
+    Expiration_date	DATE,
+    Effect			VARCHAR(255),
+    M_price			FLOAT			NOT NULL,
+    CONSTRAINT PRIMARY KEY	(Mcode)
 );
 
-create table treatment(
-	P_code 			int				not null,
-    Sdate			date			not null,
-    Edate			date,
-    Result			varchar(45),
-    
-    primary key(P_code),
-    foreign key(P_code) references inpatient(P_code)
+CREATE TABLE IF NOT EXISTS IMPORTED_MED
+(
+	Medcode			INT 	NOT NULL,
+    Import_price	FLOAT	NOT NULL,
+    Quantity		INT		NOT NULL,
+    Import_date		DATE,
+    CONSTRAINT PRIMARY KEY (Medcode)
 );
 
-create table t_contain(
-	P_code			int,
-    M_code			int,
-    
-	primary key(P_code, M_code),
-    foreign key(P_code) references inpatient(P_code),
-    foreign key(M_code) references	medication(M_code)
+CREATE TABLE IF NOT EXISTS PROVIDER
+(
+	Prcode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
+    Pr_name			VARCHAR(255)	NOT NULL,
+    Pr_address		VARCHAR(255),
+    Pr_phone		VARCHAR(20),
+    CONSTRAINT PRIMARY KEY	(Prcode)
 );
 
-create table examintaion(
-	P_code 			int				not null,
-    P_fee			int,
-    P_diagnosis		varchar(45),
-    Exam_date		date			not null,
-    Next_exam_date	date,
-    
-    Doc_code		int,
-    foreign key(Doc_code) references doctor(E_code),
-    
-    primary key(P_code),
-    foreign key(P_code) references outpatient(P_code)
+CREATE TABLE IF NOT EXISTS PROVIDE
+(
+	Procode			INT		NOT NULL,
+    Medprocode		INT		NOT NULL,
+    CONSTRAINT PRIMARY KEY (Procode, Medprocode)
 );
 
-create table e_contain(
-	P_code			int,
-    M_code			int,
-    
-	primary key(P_code, M_code),
-    foreign key(P_code) references outpatient(P_code),
-    foreign key(M_code) references	medication(M_code)
+CREATE TABLE IF NOT EXISTS T_CONTAIN
+(
+	Pincode			INT NOT NULL,
+    Medincode		INT NOT NULL,
+    CONSTRAINT PRIMARY KEY (Pincode, Medincode)
 );
 
-create table imported_med(
-	M_code			int				not null,
-    Im_price		int				not null,
-    Im_quantity		int				not null,
-    Imported_date	date			not null,
-    
-    primary key(M_code),
-    foreign key(M_code) references medication(M_code)
+CREATE TABLE IF NOT EXISTS E_CONTAIN
+(
+	Poutcode		INT NOT NULL,
+    Medoutcode		INT NOT NULL,
+    CONSTRAINT PRIMARY KEY (Poutcode, Medoutcode)
+);
+
+CREATE TABLE IF NOT EXISTS USER
+(
+	id				VARCHAR(255)	NOT NULL	UNIQUE,
+    password		VARCHAR(255)	NOT NULL,
+    userType		INT				NOT NULL,
+    PRIMARY KEY (id)
 );
 
 
