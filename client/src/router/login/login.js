@@ -23,28 +23,46 @@ const Login = () => {
     const [phone, setPhone] = useState('')
     const [type, setType] = useState('')
 
-    const loginSubmit = () => {
-        Axios.get('http://localhost:3001/api/user/login')
+    const authLogin = (userType) => {
+        switch (userType) {
+            case 1:
+                history.push('/user/manager')
+                break;
+        
+            case 2:
+                history.push('/user/employee')
+                break;
 
-        // console.log(userID)
-        // console.log(password)
+            case 3:
+                history.push('/user/patient')
+                break;
+                
+            default:
+                break;
+        }
+    }
+
+    const loginSubmit = () => {
+        Axios.get(`http://localhost:3001/api/user/login/`,{
+            params:{
+                userID: userID,
+                password: password
+            }
+        }).then((res) => console.log(res.data[0].userType))
     }
 
     const signupSubmit = () => {
-        Axios.post('http://localhost:3001/api/user/signup')
-        
-        // console.log(userID)
-        // console.log(password)
-        // console.log(confirmPass)
-        // console.log(fname)
-        // console.log(lname)
-        // console.log(DD)
-        // console.log(MM)
-        // console.log(YYYY)
-        // console.log(gender)
-        // console.log(phone)
-        // console.log(type)
+        Axios.post('http://localhost:3001/api/user/signup', {
+            P_fname: fname,
+            P_lname: lname,
+            P_dob: YYYY + '-' + MM + '-' + DD,
+            P_gender: gender,
+            P_phone: phone,
+
+            P_type: type
+        }).then(() => {alert('ins success')})
     }
+
     return (
         <div className="LoginForm">
             {

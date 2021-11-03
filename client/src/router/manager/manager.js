@@ -40,36 +40,43 @@ const Manager = ({authorized}) => {
         return <Redirect to='/login'/>
     }
     return(
-          <div className="App">
-        <h1>Hospital App</h1>
-        <h2>Insert employee</h2>
-        <div  className="form">
-          <label>Code</label>
-          <input type='text' onChange = {(e) => {setCode(e.target.value)}}/>
+      <Router>
+        <div>
+          <Switch>
+            <Route path='/user/manager'/>
+            <Route path='/user/manager/employee'/>
+            <Route path='/user/manager/medication'/>
+          </Switch>
+        </div>
+      </Router>
+      // <div className="App">
+      //   <h1>Hospital App</h1>
+      //   <h2>Insert employee</h2>
+      //   <div  className="form">
+      //     <label>Code</label>
+      //     <input type='text' onChange = {(e) => {setCode(e.target.value)}}/>
 
-          <label>Last Name</label>
-          <input type='text' onChange = {(e) => {setLname(e.target.value)}}/>
+      //     <label>Last Name</label>
+      //     <input type='text' onChange = {(e) => {setLname(e.target.value)}}/>
 
           
 
-          <button onClick={submitForm}>Submit</button>
+      //     <button onClick={submitForm}>Submit</button>
 
     
-          {patientList.map((val) => {
-            return (
-              <div>
-                <h1>patient: {val.P_code}, name: {val.P_lname}</h1>
-                <button onClick = {() => {deleteButton(val.P_code)}}>Delete</button>
-                <input type='text' onChange = {(e) => {setNewLname(e.target.value)}}/>
-                <button onClick = {() => {updateButton(val.P_code)}}>Update</button>
-              </div>
-            )
-          })}
+      //     {patientList.map((val) => {
+      //       return (
+      //         <div>
+      //           <h1>patient: {val.P_code}, name: {val.P_lname}</h1>
+      //           <button onClick = {() => {deleteButton(val.P_code)}}>Delete</button>
+      //           <input type='text' onChange = {(e) => {setNewLname(e.target.value)}}/>
+      //           <button onClick = {() => {updateButton(val.P_code)}}>Update</button>
+      //         </div>
+      //       )
+      //     })}
 
-        </div>
-        <div>
-        </div>
-      </div>    
+      //   </div>
+      // </div>    
     )
 }
 

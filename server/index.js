@@ -4,6 +4,7 @@ import mysql  from 'mysql'
 
 const app = express()
 
+import * as user from './api/user.js'
 import * as employee from './api/employee.js'
 import * as patient from './api/patient.js'
 import * as medication from './api/medication.js'
@@ -20,6 +21,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 //user
+app.get('/api/user/login/', (req, res) => { user.login(req, res, db) })
+app.post('/api/user/signup', (req, res) => { user.signup(req, res, db) })
 
 //employee
 app.post('/api/employee/insert', (req, res) => { employee.insert(req, res, db) })

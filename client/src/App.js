@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path={['/','/login']} component={Login}/>
-        <Route exact path='/user/manager' component={() => <Manager authorized={1}/>}/>
+        <Route exact path='/user/manager' component={Manager}/>
         {/* <Route exact path='/user/employee' component={() => <Manager authorized={2}/>}/>
         <Route exact path='/user/patient' component={() => <Manager authorized={3}/>}/> */}
       </Switch>
