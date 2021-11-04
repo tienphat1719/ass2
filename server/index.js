@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 //user
-app.get('/api/user/login/', (req, res) => { user.login(req, res, db) })
+app.get('/api/user/login', (req, res) => { user.login(req, res, db) })
 app.post('/api/user/signup', (req, res) => { user.signup(req, res, db) })
 
 //employee

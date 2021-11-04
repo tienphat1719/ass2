@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {BrowserRouter as Router,Switch,Route,Link, Redirect} from "react-router-dom"
+import {Switch,Route,Link, Redirect} from "react-router-dom"
 import Axios from 'axios'
 
-const Manager = ({authorized}) => {
+import Nav from './nav'
+import ManagerMain from './manager_main'
+import ManagerEmployee from './manager_employee'
+
+const Manager = () => {
     const [code, setCode] = useState()
     const [lname, setLname] = useState('')
     
@@ -36,19 +40,18 @@ const Manager = ({authorized}) => {
         }).then(() => {alert('update success')})
     }
 
-    if(authorized !== 1){
-        return <Redirect to='/login'/>
-    }
     return(
-      <Router>
-        <div>
-          <Switch>
-            <Route path='/user/manager'/>
-            <Route path='/user/manager/employee'/>
-            <Route path='/user/manager/medication'/>
-          </Switch>
-        </div>
-      </Router>
+      <div>
+        <Nav />
+        <Switch>
+            <Route path='/manager/home'> 
+              <ManagerMain />
+            </Route>
+            <Route path='/manager/employee'> 
+              <ManagerEmployee />
+            </Route>
+        </Switch>
+      </div>
       // <div className="App">
       //   <h1>Hospital App</h1>
       //   <h2>Insert employee</h2>

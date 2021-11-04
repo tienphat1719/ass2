@@ -1,17 +1,37 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const Nav = () => {
-    return(
-        <nav>
-            <Link to='/user/manager/employee'>
-                <li>Employee</li>
-            </Link>
+    const history = useHistory()
 
-            <Link to='/user/manager/medication'>
-                <li>Medication</li>
-            </Link>
-        </nav>
+    const logOut = () => {
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('token')
+        history.replace('/')
+    }
+    
+    return(
+            <ul>
+                <li>
+                <Link to='/manager'>
+                    Home
+                </Link>
+                </li>
+
+                <li>
+                <Link to='/manager/employee'>
+                    Employee
+                </Link>
+                </li>
+
+                <li>
+                <Link to='/manager/medication'>
+                    medication
+                </Link>
+                </li>
+                <button onClick={logOut}>log out</button>
+            </ul>
+
     )
 }
 

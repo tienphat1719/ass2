@@ -1,6 +1,6 @@
 import './login.css';
 import { useHistory } from "react-router-dom"
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Axios from 'axios'
 
 const Login = () => {
@@ -13,7 +13,6 @@ const Login = () => {
     const [password, setPassword] = useState('')
     
     //Signup
-    const [confirmPass, setConfirmPass] = useState('')
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [DD, setDD] = useState('')
@@ -23,18 +22,21 @@ const Login = () => {
     const [phone, setPhone] = useState('')
     const [type, setType] = useState('')
 
-    const authLogin = (userType) => {
+    const authLogin = (userType, token) => {
+        localStorage.setItem('accessToken', 1)
+        localStorage.setItem('token', token)
+
         switch (userType) {
             case 1:
-                history.push('/user/manager')
+                history.replace('/manager')
                 break;
         
             case 2:
-                history.push('/user/employee')
+                history.replace('/employee')
                 break;
 
             case 3:
-                history.push('/user/patient')
+                history.replace ('/patient')
                 break;
                 
             default:
@@ -43,12 +45,12 @@ const Login = () => {
     }
 
     const loginSubmit = () => {
-        Axios.get(`http://localhost:3001/api/user/login/`,{
+        Axios.get('http://localhost:3001/api/user/login/',{
             params:{
                 userID: userID,
                 password: password
             }
-        }).then((res) => console.log(res.data[0].userType))
+        }).then((res) => authLogin(res.data[0].userType, userID))
     }
 
     const signupSubmit = () => {
@@ -116,7 +118,6 @@ const Login = () => {
                         
                         <input type="text" placeholder="Username" onChange={(e) => setUserID(e.target.value)}/>
                         <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-                        <input type="password" placeholder="Comfirm password" onChange={(e) => setConfirmPass(e.target.value)}/>
 
                         <div>
                             <b>Already have an account?  </b>
