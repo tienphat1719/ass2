@@ -29,8 +29,9 @@ app.post('/api/employee/insert', (req, res) => { employee.insert(req, res, db) }
 
 //patient
 app.post('/api/patient/insert', (req, res) => { patient.insert(req, res, db) })
-app.get('/api/patient/get', (req, res) => { patient.select(req, res, db) })
-app.delete('/api/patient/delete/:P_code', (req, res) => { patient.del(req, res, db) })
+app.get('/api/patient/getAll', (req, res) => { patient.selectAll(req, res, db) })
+app.get('/api/patient/getOne', (req, res) => { patient.selectOne(req, res, db) })
+app.delete('/api/patient/delete/:Pcode', (req, res) => { patient.del(req, res, db) })
 app.put('/api/patient/update', (req, res) => { patient.update(req, res, db)} )
 
 //medication

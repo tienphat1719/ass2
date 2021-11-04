@@ -3,22 +3,17 @@ import {Switch,Route,Link, Redirect} from "react-router-dom"
 import Axios from 'axios'
 
 import Nav from './nav'
-import ManagerMain from './manager_main'
+import ManagerHome from './manager_home'
 import ManagerEmployee from './manager_employee'
+import ManagerDepartment from './manager_department'
+import ManagerMedication from './manager_medication'
+import ManagerPatient from './manager_patient'
 
 const Manager = () => {
     const [code, setCode] = useState()
     const [lname, setLname] = useState('')
     
     const [newLname, setNewLname] = useState('')
-
-    const [patientList, setPaList] = useState([])
-
-    useEffect(() => {
-        Axios.get('http://localhost:3001/api/patient/get').then((res) => {
-        setPaList(res.data)
-        })
-    }, [])
 
     const submitForm = () => {
         Axios.post('http://localhost:3001/api/patient/insert', {
@@ -44,11 +39,28 @@ const Manager = () => {
       <div>
         <Nav />
         <Switch>
-            <Route path='/manager/home'> 
-              <ManagerMain />
+            <Route exact path='/manager'> 
+              <ManagerHome />
             </Route>
+
+            <Route path='/manager/home'> 
+              <ManagerHome />
+            </Route>
+
             <Route path='/manager/employee'> 
               <ManagerEmployee />
+            </Route>
+
+            <Route path='/manager/department'> 
+              <ManagerDepartment />
+            </Route>
+
+            <Route path='/manager/medication'> 
+              <ManagerMedication />
+            </Route>
+
+            <Route path='/manager/patient'> 
+              <ManagerPatient />
             </Route>
         </Switch>
       </div>

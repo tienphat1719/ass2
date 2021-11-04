@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
-const ManagerMain = () => {
+const ManagerHome = () => {
     return(
         <div>
             This is manager user
@@ -9,4 +9,4 @@ const ManagerMain = () => {
     )
 }
 
-export default ManagerMain
+export default ManagerHome

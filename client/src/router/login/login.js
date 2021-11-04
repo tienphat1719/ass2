@@ -23,34 +23,36 @@ const Login = () => {
     const [type, setType] = useState('')
 
     const authLogin = (userType, token) => {
-        localStorage.setItem('accessToken', 1)
+        localStorage.setItem('accessToken', userType)
         localStorage.setItem('token', token)
+        history.replace ('/patient')
 
-        switch (userType) {
-            case 1:
-                history.replace('/manager')
-                break;
+        // switch (userType) {
+        //     case 1:
+        //         history.replace('/manager')
+        //         break;
         
-            case 2:
-                history.replace('/employee')
-                break;
+        //     case 2:
+        //         history.replace('/employee')
+        //         break;
 
-            case 3:
-                history.replace ('/patient')
-                break;
+        //     case 3:
+        //         history.replace ('/patient')
+        //         break;
                 
-            default:
-                break;
-        }
+        //     default:
+        //         break;
+        // }
     }
 
     const loginSubmit = () => {
-        Axios.get('http://localhost:3001/api/user/login/',{
-            params:{
-                userID: userID,
-                password: password
-            }
-        }).then((res) => authLogin(res.data[0].userType, userID))
+        // Axios.get('http://localhost:3001/api/user/login/',{
+        //     params:{
+        //         userID: userID,
+        //         password: password
+        //     }
+        // }).then((res) => authLogin(res.data[0].userType, userID))
+        authLogin(3,3)
     }
 
     const signupSubmit = () => {
@@ -61,7 +63,10 @@ const Login = () => {
             P_gender: gender,
             P_phone: phone,
 
-            P_type: type
+            P_type: type,
+
+            userID: userID,
+            password: password
         }).then(() => {alert('ins success')})
     }
 

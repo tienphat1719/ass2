@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS INPATIENT
 	Date_of_admission	DATE,
     Sickroom			VARCHAR(10),
     Date_of_discharge	DATE,
-    I_fee				FLOAT	NOT NULL,
+    I_fee				FLOAT,
     Nurse_code			INT 	NOT NULL,
     Doc_code			INT 	NOT NULL,
     CONSTRAINT PRIMARY KEY (Picode)

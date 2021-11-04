@@ -15,7 +15,7 @@ export const insert = (req,res,db) => {
     )
 }
 
-export const select = (req,res,db) => {
+export const selectAll = (req,res,db) => {
     const sqlSelcet = 'SELECT * FROM patient;'
 
     db.query(sqlSelcet,
@@ -30,10 +30,26 @@ export const select = (req,res,db) => {
     )
 }
 
+export const selectOne = (req,res,db) => {
+    const Pcode = req.query.Pcode
+
+    const sqlSelcet = 'SELECT * FROM patient WHERE Pcode = ?;'
+    db.query(sqlSelcet, Pcode,
+        
+        (err, result) => {
+            if(err) {
+                console.log(err)
+            } else {
+                res.send(result)
+            }
+        }
+    )
+}
+
 export const del = (req,res,db) => {
     const P_code = req.params.P_code
     
-    const sqlDelete = 'DELETE FROM patient WHERE P_code = ?'
+    const sqlDelete = 'DELETE FROM patient WHERE Pcode = ?'
     db.query(sqlDelete, P_code,
         
         (err, result) => {
