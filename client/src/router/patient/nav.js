@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
+
+import './nav.css'
 
 const Nav = () => {
     const history = useHistory()
@@ -11,14 +13,13 @@ const Nav = () => {
     }
     
     return(
-            <ul>
-                <Link to='/patient/home'>
-                    Home
-                </Link>
-                
-                <button onClick={logOut}>log out</button>
-            </ul>
+        <nav>
+            <Link to='/patient/home'>
+                Home
+            </Link>
 
+            <button onClick={logOut}>log out</button>
+        </nav>
     )
 }
 

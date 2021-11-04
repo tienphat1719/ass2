@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {Switch,Route,Link, Redirect} from "react-router-dom"
+import React, {useState} from 'react'
+import {Switch,Route} from "react-router-dom"
 import Axios from 'axios'
 
 import Nav from './nav'
@@ -10,30 +10,30 @@ import ManagerMedication from './manager_medication'
 import ManagerPatient from './manager_patient'
 
 const Manager = () => {
-    const [code, setCode] = useState()
-    const [lname, setLname] = useState('')
+    // const [code, setCode] = useState()
+    // const [lname, setLname] = useState('')
     
-    const [newLname, setNewLname] = useState('')
+    // const [newLname, setNewLname] = useState('')
 
-    const submitForm = () => {
-        Axios.post('http://localhost:3001/api/patient/insert', {
-        P_code: code,
-        P_lname: lname,
+    // const submitForm = () => {
+    //     Axios.post('http://localhost:3001/api/patient/insert', {
+    //     P_code: code,
+    //     P_lname: lname,
 
-        }).then(() => {alert('ins success')})
-    }
+    //     }).then(() => {alert('ins success')})
+    // }
 
-    const deleteButton = (P_code) => {
-        Axios.delete(`http://localhost:3001/api/patient/delete/${P_code}`).then(() => {alert('del success')})
-    }
+    // const deleteButton = (P_code) => {
+    //     Axios.delete(`http://localhost:3001/api/patient/delete/${P_code}`).then(() => {alert('del success')})
+    // }
 
-    const updateButton = (P_code) => {
-        Axios.put('http://localhost:3001/api/patient/update', {
-        P_code: P_code,
-        P_lname: newLname,
+    // const updateButton = (P_code) => {
+    //     Axios.put('http://localhost:3001/api/patient/update', {
+    //     P_code: P_code,
+    //     P_lname: newLname,
 
-        }).then(() => {alert('update success')})
-    }
+    //     }).then(() => {alert('update success')})
+    // }
 
     return(
       <div>

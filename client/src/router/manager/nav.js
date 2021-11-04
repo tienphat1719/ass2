@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
+import './nav.css'
 const Nav = () => {
     const history = useHistory()
 
@@ -11,30 +12,30 @@ const Nav = () => {
     }
     
     return(
-            <ul> 
-                <Link to='/manager/home'>
-                    Home
-                </Link>     
+        <nav>
+            <Link className='nav-links' to='/manager/home'>
+                Home
+            </Link>     
+    
+            <Link className='nav-links' to='/manager/employee'>
+                Employee
+            </Link>
+            
+            <Link className='nav-links' to='/manager/department'>
+                Department
+            </Link>
+
+            <Link className='nav-links' to='/manager/medication'>
+                Medication
+            </Link>
+
+            <Link className='nav-links' to='/manager/patient'>
+                Patient
+            </Link>
+
+            <button className='logout' onClick={logOut}>log out</button>
         
-                <Link to='/manager/employee'>
-                    Employee
-                </Link>
-                
-                <Link to='/manager/department'>
-                    Department
-                </Link>
-
-                <Link to='/manager/medication'>
-                    Medication
-                </Link>
-
-                <Link to='/manager/patient'>
-                    Patient
-                </Link>
-
-                <button onClick={logOut}>log out</button>
-            </ul>
-
+        </nav>
     )
 }
 

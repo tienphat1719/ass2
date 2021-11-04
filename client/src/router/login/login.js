@@ -25,7 +25,7 @@ const Login = () => {
     const authLogin = (userType, token) => {
         localStorage.setItem('accessToken', userType)
         localStorage.setItem('token', token)
-        history.replace ('/patient')
+        history.replace ('/manager')
 
         // switch (userType) {
         //     case 1:
@@ -52,7 +52,7 @@ const Login = () => {
         //         password: password
         //     }
         // }).then((res) => authLogin(res.data[0].userType, userID))
-        authLogin(3,3)
+        authLogin(1,1)
     }
 
     const signupSubmit = () => {
@@ -81,9 +81,12 @@ const Login = () => {
                         
                         <div>
                             <b>New user?   </b>
-                            <a  className="setFlag" onClick={() => {setFlag(true)}}>Register here</a>
+                            <c  className="setFlag" onClick={() => {setFlag(true)}}>Register here</c>
                         </div>
-                        <button onClick={loginSubmit}>LOGIN</button>
+
+                        <div>
+                            <button onClick={loginSubmit}>LOGIN</button>
+                        </div>
                     </div>)
             }
 
@@ -126,7 +129,7 @@ const Login = () => {
 
                         <div>
                             <b>Already have an account?  </b>
-                            <a className="setFlag" onClick={() => {setFlag(false)}}>Login</a>
+                            <c className="setFlag" onClick={() => {setFlag(false)}}>Login</c>
                         </div>
 
                         <button onClick = {signupSubmit}>SIGN UP</button>

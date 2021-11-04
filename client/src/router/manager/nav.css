@@ -1,0 +1,18 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 20px;
+  background-color: dimgray;
+  color: white;
+}
+
+.nav-links {
+  color: white;
+}
+
+.logout {
+  margin: 0px;
+  background-color: crimson;
+  color: white;
+}

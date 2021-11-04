@@ -15,10 +15,26 @@ export const insert = (req,res,db) => {
     )
 }
 
-export const select = (req,res,db) => {
+export const selectAll = (req,res,db) => {
     const sqlSelcet = 'SELECT * FROM medication;'
 
     db.query(sqlSelcet,
+        
+        (err, result) => {
+            if(err) {
+                console.log(err)
+            } else {
+                res.send(result)
+            }
+        }
+    )
+}
+
+export const selectOne = (req,res,db) => {
+    const Mcode = req.query.Mcode
+
+    const sqlSelcet = 'SELECT * FROM medication WHERE Mcode = ?;'
+    db.query(sqlSelcet, Mcode,
         
         (err, result) => {
             if(err) {

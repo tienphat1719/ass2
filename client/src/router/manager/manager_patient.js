@@ -1,12 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import Axios from 'axios'
 
 import './manager_patient.css'
 
 const ManagerPatient = () => {
-    const [code, setCode] = useState()
-    const [lname, setLname] = useState('')
     
     const [newLname, setNewLname] = useState('')
 
@@ -33,14 +30,20 @@ const ManagerPatient = () => {
     return(
         <div>
             This is manager user interact with patient
-        
+
+            <div>
+                <input type="text" placeholder="Username"/>
+                <button>Search</button>
+            </div>
             {patientList.map((val) => {
                 return (
                 <div className = 'patientList'>
-                    <h1>patient: {val.Pcode}, name: {val.P_lname}</h1>
-                    <button onClick = {() => {deleteButton(val.P_code)}}>Delete</button>
+                    <h1>patient: {val.Pcode}, name: {val.P_fname + ' ' + val.P_lname}</h1>
+
+
+                    {/* <button onClick = {() => {deleteButton(val.P_code)}}>Delete</button>
                     <input type='text' onChange = {(e) => {setNewLname(e.target.value)}}/>
-                    <button onClick = {() => {updateButton(val.P_code)}}>Update</button>
+                    <button onClick = {() => {updateButton(val.P_code)}}>Update</button> */}
                 </div>
                 )
             })}

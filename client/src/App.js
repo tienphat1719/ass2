@@ -1,7 +1,5 @@
 import './App.css';
-import {useState, useEffect} from 'react'
-import Axios from 'axios'
-import {BrowserRouter as Router,Switch,Route,Link, Redirect} from "react-router-dom"
+import {BrowserRouter as Router,Switch,Route, Redirect} from "react-router-dom"
 
 import Login from './router/login/login.js';
 import Manager from './router/manager/manager.js'

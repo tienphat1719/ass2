@@ -1,19 +1,17 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+
 import Axios from 'axios'
 
 import './manager_medication.css'
 
 const ManagerMedication = () => {
-    const [code, setCode] = useState()
-    const [lname, setLname] = useState('')
-    
+ 
     const [newLname, setNewLname] = useState('')
 
     const [medicationList, setPaList] = useState([])
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/api/medication/get').then((res) => {
+        Axios.get('http://localhost:3001/api/medication/getAll').then((res) => {
         setPaList(res.data)
         })
     }, [])
