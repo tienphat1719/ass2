@@ -7,6 +7,7 @@ const Nav = () => {
 
     const logOut = () => {
         localStorage.removeItem('accessToken')
+        localStorage.removeItem('Pcode')
         history.replace('/')
     }
     
@@ -15,10 +16,6 @@ const Nav = () => {
             <Link className='nav-links' to='/manager/home'>
                 Home
             </Link>     
-
-            {/* <Link className='nav-links' to='/manager/patient'>
-                Patient
-            </Link> */}
 
             <button className='logout' onClick={logOut}>log out</button>
         </div>

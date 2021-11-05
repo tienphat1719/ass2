@@ -6,13 +6,13 @@ const PatientHome = () => {
     return(
         <div className='home'>
             <div className = 'patientTagAdd'>
-                <Link className='nav-links' to='/manager/user/add'>
+                <Link className='nav-links' to='/manager/patient/add'>
                     Add
                 </Link>
             </div>
 
             <div className = 'patientTagSearch'>
-                <Link className='nav-links' to='/manager/user/add'>
+                <Link className='nav-links' to='/manager/patient/search'>
                     Search
                 </Link>
             </div>
