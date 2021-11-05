@@ -3,20 +3,27 @@ import {Switch,Route,Link, Redirect} from "react-router-dom"
 import Axios from 'axios'
 
 import './patient.css'
+import PatientHome from './patientHome'
 import PatientAdd from './patientAdd'
 import PatientSearch from './patientSearch'
 
 const NavPatient = () => {
     return(
-        <nav>
-            <Link className='nav-links' to='/manager/patient/add'>
-                Add
-            </Link>     
+        <div>
+            <Switch>
+                <Route exact path='/manager/patient'> 
+                    <PatientHome />
+                </Route>
 
-            <Link className='nav-links' to='/manager/patient/search'>
-                Search
-            </Link>
-        </nav>
+                <Route path='/manager/patient/add'> 
+                    <PatientAdd />
+                </Route>
+
+                <Route path='/manager/patient/search'> 
+                    <PatientSearch />
+                </Route>
+            </Switch>
+        </div>
     )
 }
 

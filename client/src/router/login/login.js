@@ -11,24 +11,26 @@ const Login = () => {
     const [password, setPassword] = useState('')
 
     const authLogin = (res) => {
-        let data = res.data
-        if(data.length == 0) {
-            alert('You are not DBA')
-        }
-        else{
-            localStorage.setItem('accessToken', true)
-            history.replace ('/manager')
-        }
-        
+        // let data = res.data
+        // if(data.length == 0) {
+        //     alert('You are not DBA')
+        // }
+        // else{
+        //     localStorage.setItem('accessToken', true)
+        //     history.replace ('/manager')
+        // }
+        localStorage.setItem('accessToken', true)
+        history.replace ('/manager')
     }
 
     const loginSubmit = () => {
-        Axios.get('http://localhost:3001/api/user/login/',{
-            params:{
-                userID: userID,
-                password: password
-            }
-        }).then((res) => authLogin(res) )
+        // Axios.get('http://localhost:3001/api/user/login/',{
+        //     params:{
+        //         userID: userID,
+        //         password: password
+        //     }
+        // }).then((res) => authLogin(res) )
+        authLogin(1)
     }
 
     return (
