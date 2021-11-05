@@ -7,35 +7,21 @@ const Nav = () => {
 
     const logOut = () => {
         localStorage.removeItem('accessToken')
-        localStorage.removeItem('token')
         history.replace('/')
     }
     
     return(
-        <nav>
+        <div className='navBar'>
             <Link className='nav-links' to='/manager/home'>
                 Home
             </Link>     
-    
-            <Link className='nav-links' to='/manager/employee'>
-                Employee
-            </Link>
-            
-            <Link className='nav-links' to='/manager/department'>
-                Department
-            </Link>
 
-            <Link className='nav-links' to='/manager/medication'>
-                Medication
-            </Link>
-
-            <Link className='nav-links' to='/manager/patient'>
+            {/* <Link className='nav-links' to='/manager/patient'>
                 Patient
-            </Link>
+            </Link> */}
 
             <button className='logout' onClick={logOut}>log out</button>
-        
-        </nav>
+        </div>
     )
 }
 

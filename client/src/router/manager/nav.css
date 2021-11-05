@@ -1,6 +1,6 @@
-nav {
+.navBar {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   min-height: 20px;
   background-color: dimgray;
@@ -9,6 +9,7 @@ nav {
 
 .nav-links {
   color: white;
+  margin: 20px;
 }
 
 .logout {
