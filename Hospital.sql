@@ -4,9 +4,9 @@ USE HOSPITAL;
 
 CREATE TABLE IF NOT EXISTS EMPLOYEE
 (
-	Ecode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
-    E_fname 		VARCHAR(255)	NOT NULL,
-    E_lname 		VARCHAR(255)	NOT NULL,
+	Ecode			INT 			UNIQUE	AUTO_INCREMENT,
+    E_fname 		VARCHAR(255),
+    E_lname 		VARCHAR(255),
     E_dob			DATE,
     E_address		VARCHAR(255),
     E_gender		CHAR(1),
@@ -16,71 +16,71 @@ CREATE TABLE IF NOT EXISTS EMPLOYEE
     Degree_year		INT,
     Department_code	INT,
     CONSTRAINT PRIMARY KEY (Ecode)
-);
+)AUTO_INCREMENT = 1000;
 
 CREATE TABLE IF NOT EXISTS NURSE
 (
-	Encode		INT 	NOT NULL,
+	Encode		INT,
     CONSTRAINT PRIMARY KEY	(Encode)
 );
 
 CREATE TABLE IF NOT EXISTS DOCTOR
 (
-	Edcode		INT 	NOT NULL,
+	Edcode		INT,
     CONSTRAINT PRIMARY KEY (Edcode)
 );
 
 CREATE TABLE IF NOT EXISTS DEPARTMENT
 (
-	Depart_code		INT 	NOT NULL	UNIQUE	AUTO_INCREMENT,
+	Depart_code		INT		UNIQUE	AUTO_INCREMENT,
     Title			VARCHAR(256),
     Dean_code		INT,
     CONSTRAINT PRIMARY KEY (Depart_code)
-);
+)AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS PATIENT
 (
-	Pcode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
-    P_fname 		VARCHAR(255)	NOT NULL,
-    P_lname 		VARCHAR(255)	NOT NULL,
+	Pcode			INT				UNIQUE	AUTO_INCREMENT,
+    P_fname 		VARCHAR(255),
+    P_lname 		VARCHAR(255),
     P_dob			DATE,
     P_gender		CHAR(1),
     P_phone			VARCHAR(20),
 	CONSTRAINT PRIMARY KEY (Pcode)
-);
+)AUTO_INCREMENT = 1000000;
 
 CREATE TABLE IF NOT EXISTS OUTPATIENT
 (
-	Pocode			INT 	NOT NULL,
+	Pocode			INT,
     CONSTRAINT PRIMARY KEY (Pocode)
 );
 
 CREATE TABLE IF NOT EXISTS EXAMINATION
 (
-	Pocode			INT 	NOT NULL,
-    O_fee			FLOAT	NOT NULL,
+	Pocode			INT,
+    O_fee			FLOAT,
     O_diagnosis		VARCHAR(255),
     Exam_date		DATE,
     Next_exam_date	DATE,
-    Doc_code		INT 	NOT NULL,
+    Doc_code		INT,
     CONSTRAINT PRIMARY KEY	(Pocode, Exam_date, Next_exam_date)
 );
 
 CREATE TABLE IF NOT EXISTS INPATIENT
 (
-	Picode				INT 	NOT NULL,
+	Picode				INT,
 	Date_of_admission	DATE,
     Sickroom			VARCHAR(10),
     Date_of_discharge	DATE,
     I_fee				FLOAT,
-    Nurse_code			INT 	NOT NULL,
-    Doc_code			INT 	NOT NULL,
+    Nurse_code			INT,
+    Doc_code			INT,
     CONSTRAINT PRIMARY KEY (Picode)
 );
 
 CREATE TABLE IF NOT EXISTS TREATMENT
 (
-	Picode			INT		NOT NULL,
+	Picode			INT,
     T_start_date	DATE,
     T_end_date		DATE,
     Result			VARCHAR(255),
@@ -89,59 +89,57 @@ CREATE TABLE IF NOT EXISTS TREATMENT
 
 CREATE TABLE IF NOT EXISTS MEDICATION
 (
-	Mcode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
-    M_name			VARCHAR(255)	NOT NULL,
+	Mcode			INT 			UNIQUE	AUTO_INCREMENT,
+    M_name			VARCHAR(255),
     Expiration_date	DATE,
     Effect			VARCHAR(255),
-    M_price			FLOAT			NOT NULL,
+    M_price			FLOAT,
     CONSTRAINT PRIMARY KEY	(Mcode)
-);
+)AUTO_INCREMENT = 2000;
 
 CREATE TABLE IF NOT EXISTS IMPORTED_MED
 (
-	Medcode			INT 	NOT NULL,
-    Import_price	FLOAT	NOT NULL,
-    Quantity		INT		NOT NULL,
+	Medcode			INT,
+    Import_price	FLOAT,
+    Quantity		INT,
     Import_date		DATE,
     CONSTRAINT PRIMARY KEY (Medcode)
 );
 
 CREATE TABLE IF NOT EXISTS PROVIDER
 (
-	Prcode			INT 			NOT NULL	UNIQUE	AUTO_INCREMENT,
-    Pr_name			VARCHAR(255)	NOT NULL,
+	Prcode			INT 			UNIQUE	AUTO_INCREMENT,
+    Pr_name			VARCHAR(255),
     Pr_address		VARCHAR(255),
     Pr_phone		VARCHAR(20),
     CONSTRAINT PRIMARY KEY	(Prcode)
-);
+)AUTO_INCREMENT = 101;
 
 CREATE TABLE IF NOT EXISTS PROVIDE
 (
-	Procode			INT		NOT NULL,
-    Medprocode		INT		NOT NULL,
+	Procode			INT,
+    Medprocode		INT,
     CONSTRAINT PRIMARY KEY (Procode, Medprocode)
 );
 
 CREATE TABLE IF NOT EXISTS T_CONTAIN
 (
-	Pincode			INT NOT NULL,
-    Medincode		INT NOT NULL,
+	Pincode			INT,
+    Medincode		INT,
     CONSTRAINT PRIMARY KEY (Pincode, Medincode)
 );
 
 CREATE TABLE IF NOT EXISTS E_CONTAIN
 (
-	Poutcode		INT NOT NULL,
-    Medoutcode		INT NOT NULL,
+	Poutcode		INT,
+    Medoutcode		INT,
     CONSTRAINT PRIMARY KEY (Poutcode, Medoutcode)
 );
 
-CREATE TABLE IF NOT EXISTS USER
+CREATE TABLE IF NOT EXISTS USER_TABLE
 (
-	id				VARCHAR(255)	NOT NULL	UNIQUE,
-    password		VARCHAR(255)	NOT NULL,
-    userType		INT				NOT NULL,
+	id				VARCHAR(255)	UNIQUE,
+    password		VARCHAR(255),
+    userType		VARCHAR(10),
     PRIMARY KEY (id)
 );
-
-

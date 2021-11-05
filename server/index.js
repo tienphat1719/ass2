@@ -39,6 +39,8 @@ app.post('/api/employee/insert', (req, res) => { employee.insert(req, res, db) }
 app.post('/api/patient/insert', (req, res) => { patient.insert(req, res, db) })
 app.get('/api/patient/getAll', (req, res) => { patient.selectAll(req, res, db) })
 app.get('/api/patient/getOne', (req, res) => { patient.selectOne(req, res, db) })
+app.get('/api/patient/getIDstart', (req, res) => { patient.selectOneWithStart(req, res, db) })
+app.get('/api/patient/getDocIDstart', (req, res) => { patient.getInPatientIDFromDocID(req, res, db)})
 app.delete('/api/patient/delete/:Pcode', (req, res) => { patient.del(req, res, db) })
 app.put('/api/patient/update', (req, res) => { patient.update(req, res, db)} )
 
@@ -50,14 +52,15 @@ app.get('/api/examination/getAll', (req,res) => { examination.selectAll(req, res
 
 //inpatient
 //treatment
+
 //t_contain
 
 //medication
-app.post('/api/medication/insert', (req, res) => { medication.insert(req, res, db) })
-app.get('/api/medication/getAll', (req, res) => { medication.selectAll(req, res, db) })
-app.get('/api/medication/getOne', (req, res) => { medication.selectOne(req, res, db) })
-app.delete('/api/medication/delete/:P_code', (req, res) => { medication.del(req, res, db) })
-app.put('/api/medication/update', (req, res) => { medication.update(req, res, db)} )
+// app.post('/api/medication/insert', (req, res) => { medication.insert(req, res, db) })
+// app.get('/api/medication/getAll', (req, res) => { medication.selectAll(req, res, db) })
+// app.get('/api/medication/getOne', (req, res) => { medication.selectOne(req, res, db) })
+// app.delete('/api/medication/delete/:P_code', (req, res) => { medication.del(req, res, db) })
+// app.put('/api/medication/update', (req, res) => { medication.update(req, res, db)} )
 
 //provider
 

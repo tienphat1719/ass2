@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import Axios from 'axios'
 
 const PatientAdd = () => {
     const [fname, setFname] = useState('')
@@ -9,6 +10,18 @@ const PatientAdd = () => {
     const [gender, setGender] = useState('')
     const [phone, setPhone] = useState('')
     const [type, setType] = useState('')
+
+    const addSubmit = () => {
+        Axios.post('http://localhost:3001/api/patient/insert', {
+            P_fname: fname,
+            P_lname: lname,
+            P_dob: YYYY + '-' + MM + '-' + DD,
+            P_gender: gender,
+            P_phone: phone,
+
+            P_type: type
+        }).then((res) => console.log(res))
+    }
 
     return (
         <div className='Login'>
@@ -41,7 +54,7 @@ const PatientAdd = () => {
                 </select>
             </div>
             
-            <button onClick = {() => {}}>ADD</button>
+            <button onClick = {addSubmit}>ADD</button>
         </div>
     )
 }

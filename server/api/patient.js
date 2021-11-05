@@ -46,6 +46,67 @@ export const selectOne = (req,res,db) => {
     )
 }
 
+export const selectOneWithStart = (req,res,db) => {
+    const Pcode = req.query.Pcode
+
+    const sqlSelect = 'SELECT * FROM patient (lower(Pcode) LIKE \'?%\')';
+    db.query(sqlSelect, Pcode,
+        
+        (err, result) => {
+            if(err) {
+                console.log(err)
+            } else {
+                res.send(result)
+            }
+        }
+    )
+}
+
+function getCodeFromDocID(sql, req, db) {
+    const docID = req.params.Pcode;
+    return new Promise((resolve, reject) => {
+        db.query(sql, [docID], 
+        
+        (error, result) => {
+            if(error) {
+                reject(error);
+            } else {
+                resolve(result);
+            }
+        })  
+    })
+}
+
+export const getInPatientIDFromDocID = async (req, res, db) => {
+    const docID = req.params.Doc_code;
+
+    const sqlTakePicode = 'SELECT Picode FROM inpatient WHERE Doc_code = ?';
+    const sqlTakePocode = 'SELECT Pocode FROM examination WHERE Doc_code = ?';
+    
+    const piCode = await getCodeFromDocID(sqlTakePicode, req, db);
+    const poCode = await getCodeFromDocID(sqlTakePocode, req, db);
+    const pCodes = piCode.concat(poCode);
+
+    const sqlSelect = 'SELECT * FROM patient WHERE Pcode = ?;'
+    // retrieve thông tin của patient có id trong pCode
+    const result = pCodes.map(async(code) => {
+        return await new Promise((resolve, reject) => {
+            db.query(sqlSelect, code, 
+            
+            (err, result) => {
+                if(err) {
+                    reject(error);
+                } else {
+                    resolve(result);
+                }
+            })
+        })
+    });
+    
+    console.log(result);
+    res.send(result);      
+}
+
 export const del = (req,res,db) => {
     const P_code = req.params.P_code
     

@@ -8,6 +8,9 @@ const PatientDetail = () => {
         P_fname: '', P_lname: '',
         P_dob: '', P_gender: '', P_phone: ''
     })
+    const [isInpatient, setIsInpatient] = useState()
+
+    // get patient info
     useEffect(() => {
         Axios.get('http://localhost:3001/api/patient/getOne', {
             params:{
@@ -18,17 +21,20 @@ const PatientDetail = () => {
         })
     }, [])
 
+    // get Treatment if Inpatient
+    // get Examination if Outpatient
     const [examList, setExamList] = useState([])
+    const [treatmentList, setTreatmentList] = useState([])
     useEffect(() => {
         const paType = Pcode.substring(0,2)
         
         if(paType == 'IP'){
             Axios.get('http://localhost:3001/api/treatment/get', {
                 params:{
-                    Pcode: Pcode
+                    Picode: Pcode
                 }
             }).then((res) => {
-                
+                setTreatmentList(res.data)
             })
         } else {
             Axios.get('http://localhost:3001/api/examination/getAll', {
@@ -41,6 +47,8 @@ const PatientDetail = () => {
         }
     }, [])
 
+
+    
     return(
         <div>
             <div>
@@ -60,6 +68,7 @@ const PatientDetail = () => {
                 </div>
             </div>
 
+            
             <div>
                 <h2>Checkup List</h2>
                 {examList.map((val) => {
@@ -70,6 +79,7 @@ const PatientDetail = () => {
                         </div>
                     )
                 })}
+                {}
             </div>
         </div>
     )
