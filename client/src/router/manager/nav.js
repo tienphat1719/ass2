@@ -17,7 +17,7 @@ const Nav = () => {
                 Home
             </Link>     
 
-            <button className='logout' onClick={logOut}>log out</button>
+            <button className='logout' onClick={logOut}>LogOut</button>
         </div>
     )
 }

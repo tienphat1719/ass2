@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import Axios from 'axios'
 
+import './patientAdd.css'
+
 const PatientAdd = () => {
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
@@ -25,7 +27,8 @@ const PatientAdd = () => {
 
     return (
         <div className='Login'>
-            <h1>Add Patient</h1>
+            <h2>Add patient </h2>
+
             <div>
                 <input className='name' type="text" placeholder="First Name" onChange={(e) => setFname(e.target.value)}/>
                 <input className='name' type="text" placeholder="Last name" onChange={(e) => setLname(e.target.value)}/>

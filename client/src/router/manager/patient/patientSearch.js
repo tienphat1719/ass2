@@ -21,7 +21,7 @@ const PatientSearch = () => {
                 Pcode: searchPaID
             }
         }).then((res) => {
-            console.log(res)
+            setPaList(res.data)
         })
     }
 
@@ -32,7 +32,9 @@ const PatientSearch = () => {
                 Pcode: searchDocID
             }
         }).then((res) => {
-            console.log(res)
+            let Palist = []
+            res.data.map((e) => Palist.push(e[0]))
+            setPaList(Palist)
         })
     }
 

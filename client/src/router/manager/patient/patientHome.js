@@ -1,19 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import './patientHome.css'
+
 const PatientHome = () => {
 
     return(
         <div className='home'>
             <div className = 'patientTagAdd'>
-                <Link className='nav-links' to='/manager/patient/add'>
-                    Add
+                <Link className='user-link' to='/manager/patient/add'>
+                    ADD
                 </Link>
             </div>
 
             <div className = 'patientTagSearch'>
-                <Link className='nav-links' to='/manager/patient/search'>
-                    Search
+                <Link className='patient-link' to='/manager/patient/search'>
+                    SEARCH
                 </Link>
             </div>
         </div>

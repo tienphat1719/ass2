@@ -1,3 +1,7 @@
+.patientSearch input {
+  background-color: rgb(110, 94, 254);
+}
 .patientSearch {
   background-color: blueviolet;
+  text-align: center;
 }

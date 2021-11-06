@@ -7,14 +7,14 @@ const ManagerHome = () => {
     return(
         <div className='home'>
             <div className = 'userTag'>
-                <Link className='nav-links' to='/manager/user'>
-                    User
+                <Link className='user-link' to='/manager/user' Style={{textDecoration:'none'}}>
+                    USER
                 </Link>
             </div>
 
             <div className = 'patientTag'>
-                <Link className='nav-links' to='/manager/patient'>
-                    Patient
+                <Link className='patient-link' to='/manager/patient'  Style={{textDecoration:'none'}}>
+                    PATIENT
                 </Link>
             </div>
         </div>
