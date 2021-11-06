@@ -1,10 +1,20 @@
 import React, {useState} from 'react'
+import Axios from 'axios'
 
 import './userAdd.css'
 
 const UserAdd = () => {
     const [userID, setUserID] = useState('')
     const [password, setPassword] = useState('')
+
+    const addSubmit =() => {
+        Axios.post('http://localhost:3001/api/user/signup',{
+            userID: userID,
+            password: password
+        }).then((res) => {
+            alert('Insert Success')
+        })
+    }
 
     return (
         <div className='signup'>
@@ -17,7 +27,7 @@ const UserAdd = () => {
             </div>    
 
             <div className='button'>
-              <button onClick={() => {}}>ADD</button>
+              <button onClick={addSubmit}>ADD</button>
             </div>
         </div>
     )

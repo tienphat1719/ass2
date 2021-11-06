@@ -8,8 +8,11 @@ import * as user from './api/user.js'
 import * as employee from './api/employee.js'
 import * as patient from './api/patient.js'
 import * as outpatient from './api/out_patient.js'
+import * as inpatient from './api/in_patient.js'
 import * as examination from './api/examination.js'
+import * as treatment from './api/treatment.js'
 import * as medication from './api/medication.js'
+
 
 const db = mysql.createPool({
     host:'localhost',
@@ -51,8 +54,9 @@ app.get('/api/examination/getAll', (req,res) => { examination.selectAll(req, res
 //e_contain
 
 //inpatient
+app.get('/api/inpatient/getOne', (req, res) => { inpatient.selectOne(req, res, db) })
 //treatment
-
+app.get('/api/treatment/getAll', (req,res) => { treatment.selectAll(req, res, db) })
 //t_contain
 
 //medication

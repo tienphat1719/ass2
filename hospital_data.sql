@@ -29,20 +29,20 @@ INSERT INTO DEPARTMENT(Depart_code,title,Dean_code) VALUES  (3,'Van Canto',1005)
 INSERT INTO DEPARTMENT(Depart_code,title,Dean_code) VALUES  (4, 'Dream Theater',1006);
 INSERT INTO DEPARTMENT(Depart_code,title,Dean_code) VALUES  (5,'Tiara',NULL);
 
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('1The Great','Escape','2010-06-12','M','03654984235');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('2Mercy','Falls','2002-04-8','M','01242743775');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('3Master of','Puppets','1968-07-25','M','02742747545');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('4Justice for','All','1990-12-2','F','4423453727');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('5Helio','Centric','1973-11-4','M','14041243753');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('6The','Unforgiving','2002-08-16','F','7527575637');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('7Individual Thought ','Patterns','1963-01-01','M','45324171237');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('8Human','Enter','1888-02-17','F','37537421437');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('9Mask','Plymton','1965-05-21','M','24537542');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('10Eagle','Shot','2005-07-06','F','42727357343');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('11The Final','Countdown','2005-07-06','F','23753721');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('12Wishing','Goodbye','2010-08-16','M','5435734120');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('13Today Is','Yesterday','1946-12-01','F','345345342');
-INSERT INTO PATIENT (P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('14Asked','Mountain','1999-11-12','M','378375421');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','1The Great','Escape','2010-06-12','M','03654984235');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','2Mercy','Falls','2002-04-8','M','01242743775');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','3Master of','Puppets','1968-07-25','M','02742747545');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','4Justice for','All','1990-12-2','F','4423453727');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('OP','5Helio','Centric','1973-11-4','M','14041243753');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('OP','6The','Unforgiving','2002-08-16','F','7527575637');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('OP','7Individual Thought ','Patterns','1963-01-01','M','45324171237');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('OP','8Human','Enter','1888-02-17','F','37537421437');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('OP','9Mask','Plymton','1965-05-21','M','24537542');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('OP','10Eagle','Shot','2005-07-06','F','42727357343');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','11The Final','Countdown','2005-07-06','F','23753721');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','12Wishing','Goodbye','2010-08-16','M','5435734120');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','13Today Is','Yesterday','1946-12-01','F','345345342');
+INSERT INTO PATIENT (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES ('IP','14Asked','Mountain','1999-11-12','M','378375421');
 
 INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_code,Doc_code)
 	VALUES (1000000,'2021-6-12',NULL,100.0,1000,1005);
@@ -51,16 +51,18 @@ INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_cod
 INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_code,Doc_code)
 	VALUES (1000002,'2020-1-17','2021-8-13',300.0,1003,1004);
 INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_code,Doc_code)
-	VALUES (1000003,'2019-8-12','2021-12-16',400.0,1000,1001);
+	VALUES (1000003,'2019-8-12','2020-12-16',400.0,1000,1001);
 INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_code,Doc_code)
-	VALUES (1000010,'2020-9-02','2021-12-16',321.0,1003,1005);
+	VALUES (1000010,'2020-9-02','2021-6-10',321.0,1003,1005);
 INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_code,Doc_code)
 	VALUES (1000011,'2019-04-06','2020-10-16',568.0,1007,1005);
 INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_code,Doc_code)
 	VALUES (1000012,'2021-6-13','2021-8-26',25.0,1007,1008);
 INSERT INTO INPATIENT(Picode,Date_of_admission,Date_of_discharge,I_fee,Nurse_code,Doc_code)
-	VALUES (1000013,'2019-9-02','2021-12-20',801.0,1003,1008);
+	VALUES (1000013,'2019-9-02',NULL,801.0,1003,1008);
     
+SELECT *
+from Patient;
 INSERT INTO OUTPATIENT(Pocode)	VALUES (1000004),(1000006),(1000007),(1000008),(1000009),(1000005);
 
 INSERT INTO MEDICATION(Mcode, M_name, Expiration_date, Effect, M_price)
@@ -117,7 +119,7 @@ INSERT INTO TREATMENT(Picode,T_start_date,T_end_date,Result)
 	VALUES (1000012,'2021-6-13','2020-8-13',NULL);
 INSERT INTO TREATMENT(Picode,T_start_date,T_end_date,Result)
 	VALUES (1000013,'2019-9-2','2019-12-2',NULL);
-     
+    
 INSERT INTO T_CONTAIN(Pincode,Medincode) 
 	VALUES 	(1000000,2000),(1000000,2001),(1000000,2002),(1000001,2001),
 			(1000002,2003),(1000002,2004),(1000003,2005),(1000010,2000),

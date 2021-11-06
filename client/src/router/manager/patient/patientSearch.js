@@ -53,16 +53,12 @@ const PatientSearch = () => {
             {patientList.map((val) => {
                 return (
                 <div className = 'patientList'>
-                    <h1>patient: {val.Pcode}, name: {val.P_fname + ' ' + val.P_lname}</h1>
-                    <button onClick={ () => {localStorage.setItem('Pcode', val.Pcode)} }>
-                        <Link className='nav-links' to='/manager/patient/detail'>
-                            Modify
+                    <h3>Patient: {val.Pcode}, Name: {val.P_fname + ' ' + val.P_lname}</h3>
+                    <button className='detailButton' onClick={ () => {localStorage.setItem('Pcode', val.Pcode)} }>
+                        <Link to='/manager/patient/detail'>
+                            Detail
                         </Link>
                     </button>
-                    {/* <button onClick = {() => {deleteButton(val.P_code)}}>Delete</button>
-                    <input type='text' onChange = {(e) => {setNewLname(e.target.value)}}/>
-                    <button onClick = {() => {updateButton(val.P_code)}}>Update</button>
-                    <button onClick = {() => {updateButton(val.P_code)}}>Update</button> */}
                 </div>
                 )
             })}
