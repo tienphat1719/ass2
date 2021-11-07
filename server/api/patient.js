@@ -1,9 +1,13 @@
 export const insert = (req,res,db) => {
-    const P_code = req.body.P_code
+    const P_type = req.body.P_type
+    const P_fname = req.body.P_fname
     const P_lname = req.body.P_lname
+    const P_dob = req.body.P_dob
+    const P_gender = req.body.P_gender
+    const P_phone = req.body.P_phone
 
-    const sqlInsert = 'INSERT INTO patient VALUES (?, ?);'
-    db.query(sqlInsert, [P_code, P_lname] ,
+    const sqlInsert = 'INSERT INTO patient (P_Type,P_fname,P_lname,P_dob,P_gender,P_phone)	VALUES (?, ?, ?, ?, ?, ?);'
+    db.query(sqlInsert, [P_type, P_fname, P_lname, P_dob, P_gender, P_phone] ,
         
         (err, result) => {
             if(err) {

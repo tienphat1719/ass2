@@ -4,6 +4,7 @@ import Axios from 'axios'
 import './patientAdd.css'
 
 const PatientAdd = () => {
+    const [type, setType] = useState('')
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [DD, setDD] = useState('')
@@ -11,18 +12,17 @@ const PatientAdd = () => {
     const [YYYY, setYYYY] = useState('')
     const [gender, setGender] = useState('')
     const [phone, setPhone] = useState('')
-    const [type, setType] = useState('')
 
     const addSubmit = () => {
         Axios.post('http://localhost:3001/api/patient/insert', {
+            P_type: type,
             P_fname: fname,
             P_lname: lname,
             P_dob: YYYY + '-' + MM + '-' + DD,
             P_gender: gender,
             P_phone: phone,
 
-            P_type: type
-        }).then((res) => console.log(res))
+        }).then((res) => alert('Insert success'))
     }
 
     return (
